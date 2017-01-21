@@ -4,6 +4,9 @@
 #include "ModulesApp.h"
 #include "MooseSyntax.h"
 
+#include "DiffMKernel.h"
+#include "SurfExNBC.h"
+
 template<>
 InputParameters validParams<BlackbuckApp>()
 {
@@ -45,6 +48,8 @@ extern "C" void BlackbuckApp__registerObjects(Factory & factory) { BlackbuckApp:
 void
 BlackbuckApp::registerObjects(Factory & factory)
 {
+  registerKernel(DiffMKernel);
+  registerBoundaryCondition(SurfExNBC);
 }
 
 // External entry point for dynamic syntax association
